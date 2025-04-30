@@ -72,7 +72,7 @@ export const getProductos = async (req = request, res = response) => {
 export const getProductoById = async (req = request, res = response) => {
 
     const { id } = req.params;
-    const producto = await Producto.findById(id).populate('categoria', 'name').populate('usuario', 'nombre');
+    const producto = await Producto.findById(id).populate('categoria', 'name');
 
     res.json({
         producto
