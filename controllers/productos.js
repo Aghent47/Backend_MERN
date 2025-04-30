@@ -26,6 +26,29 @@ export const crearProducto = async (req, res = response) => {
     res.status(201).json(producto);
 
 }
+export const searchProducts = async (req = request, res = response) => {
+    try {
+        const { q = '' } = req.query;
+        const regex = new RegExp(q, 'i');
+        const productos = await Producto.find({
+            $or: [
+                { nombre: regex },
+                { descripcion: regex }
+            ],
+            estado: true
+        });
+
+        res.json({
+            results: productos
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Error en el servidor'
+        });
+    }
+}
 
 export const getProductos = async (req = request, res = response) => {
     const { limit = 5, desde = 0 } = req.query;
@@ -34,8 +57,7 @@ export const getProductos = async (req = request, res = response) => {
     const [productos, total] = await Promise.all([
         Producto.find(query)
             .skip(Number(desde))
-            .limit(Number(limit))
-            .populate('usuario', 'nombre'),
+            .limit(Number(limit)),
         Producto.countDocuments({ estado: true })
     ]);
 
@@ -54,38 +76,5 @@ export const getProductoById = async (req = request, res = response) => {
 
     res.json({
         producto
-    });
-}
-
-export const actulizarProducto = async (req = request, res = response) => {
-
-    const { id } = req.params;
-    const { estado, usuario, ...data } = req.body;
-
-    if (data.nombre) {
-        data.nombre = data.nombre.toUpperCase();
-    }
-
-    data.usuario = req.usuario._id; // el usuario que lo está actulizando
-
-    const producto = await Producto.findByIdAndUpdate(id, data, { new: true });
-
-    res.json({
-        msg: 'Producto Actualizado con Exito!!',
-        producto
-    });
-
-}
-
-export const borrarProducto = async (req = request, res = response) => {
-    const { id } = req.params;
-
-    const productoBorrado = await Producto.findByIdAndUpdate(id,
-        { estado: false }, { new: true });
-
-
-    res.json({
-        msg: 'Categoria Eliminada con Exito!!',
-        productoBorrado,
     });
 }

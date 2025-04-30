@@ -10,7 +10,7 @@ export class Server{
         this.app = express();
         this.paths = {
             // Urls de las rutas
-            productos:  '/api/productos',
+            productos:  '/api',
         }
 
         // conectar a la base de datos
@@ -33,9 +33,6 @@ export class Server{
         // CORS
         this.app.use(cors());
 
-        // Public directory
-        this.app.use(express.static('public'));
-
         // Read and parse body
         this.app.use(express.json());
 
@@ -43,7 +40,6 @@ export class Server{
 
     routes(){
         this.app.use( this.paths.productos, routerProductos );
-
     }
 
     listen(){
@@ -51,5 +47,4 @@ export class Server{
             console.log(`Server is running on port ${process.env.PORT }`);
         });
     }
-
 }
