@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset y configuración base */
 * {
     margin: 0;
     padding: 0;
@@ -7,11 +7,18 @@
 
 body {
     min-height: 100vh;
-    background-color: #1a1a1a;
+    background-color: #1e1e2e !important; /* Fondo principal más suave */
+    color: #cdd6f4; /* Color de texto principal */
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 2rem;
+}
+
+/* Colores base */
+body {
+    background-color: #1e1e2e !important;
+    color: #cdd6f4; /* Color base para texto general */
 }
 
 .dark {
@@ -46,18 +53,18 @@ body {
 }
 
 .search-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: white;
+    background-color: #313244; /* Fondo de header más suave */
     border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .search-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #1e293b;
+    color: #ffffff; /* Blanco para títulos principales */
     margin-bottom: 1rem;
 }
 
@@ -65,7 +72,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #ffffff; /* Blanco para títulos principales */
 }
 
 .categories-badges {
@@ -92,8 +99,8 @@ body {
 }
 
 .category-tag {
-    background: #e2e8f0;
-    color: #475569;
+    background-color: #45475a; /* Color de fondo para tags */
+    color: #89dceb; /* Azul claro para mejor contraste */
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -106,7 +113,7 @@ body {
 }
 
 .category-tag:hover {
-    background: #cbd5e1;
+    background-color: #585b70; /* Color hover más claro */
 }
 
 .products-container {
@@ -123,10 +130,10 @@ body {
 .product-card {
     width: 100%;
     max-width: 350px;
-    background: white;
+    background-color: #313244; /* Fondo de tarjeta */
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -134,7 +141,8 @@ body {
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #363849; /* Color hover más claro */
 }
 
 /* Mejoras en la visualización de las imágenes */
@@ -169,11 +177,11 @@ body {
 .image-placeholder {
     width: 100%;
     height: 100%;
-    background: #f1f5f9;
+    background-color: #45475a;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #94a3b8;
+    color: #a6adc8;
 }
 
 .product-info {
@@ -193,12 +201,12 @@ body {
 .product-name {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #1e293b;
+    color: #f5f5f5; /* Casi blanco para nombres de productos */
     margin-bottom: 0.5rem;
 }
 
 .product-description {
-    color: #64748b;
+    color: #a6adc8; /* Gris claro para descripciones */
     font-size: 0.875rem;
     margin-bottom: 1rem;
     display: -webkit-box;
@@ -225,12 +233,12 @@ body {
 .product-price {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #2563eb;
+    color: #94e2d5; /* Verde azulado claro para precios */
 }
 
 .product-category {
-    background: #dbeafe;
-    color: #2563eb;
+    background-color: #45475a;
+    color: #89dceb;
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
     font-size: 0.75rem;
@@ -248,16 +256,16 @@ body {
 }
 
 .star {
-    color: #cbd5e1;
+    color: #45475a; /* Color inactivo */
     font-size: 1.125rem;
 }
 
 .star.active {
-    color: #fbbf24;
+    color: #f9e2af; /* Amarillo suave para estrellas activas */
 }
 
 .rating-number {
-    color: #b0b0b0;
+    color: #a6adc8; /* Gris claro para números */
     margin-left: 0.5rem;
     font-size: 0.9rem;
 }
